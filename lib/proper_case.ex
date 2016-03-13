@@ -12,6 +12,11 @@ defmodule ProperCase do
 
   Enjoy :)
    """ 
+
+  @doc """
+  The initial `snake_case_params` function that is called
+  when by an incoming request (Phoenix) 
+  """
   def snake_case_params(%{params: params} = conn, _opts) do
     %{conn | params: snake_case_params(params)}
   end
