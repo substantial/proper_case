@@ -17,16 +17,28 @@ defmodule ProperCase.Mixfile do
     [applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
+  defp description do
+    """
+    A helpful plug for Phoenix that converts your incoming parameters to Elixir's preferred `snake_case`
+
+    Use directly as a part of your `router.ex` connection pipeline :)
+    """
+  end
+
   defp deps do
     []
   end
+
+  defp package do
+    [ 
+      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      maintainers: ["Johnny Ji"],
+      licenses: ["Apache 2.0"],
+      links: %{
+        "GitHub" => "https://github.com/johnnyji/proper_case",
+        "Docs" => "https://github.com/johnnyji/proper_case"
+      }
+    ]
+  end 
+
 end
