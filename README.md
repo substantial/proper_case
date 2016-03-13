@@ -8,7 +8,7 @@ A helpful plug that converts your incoming parameters to
 ```elixir
   pipeline :api do
     plug :accepts, ["json"]
-    plug ProperCase.snake_case_params
+    plug ProperCase
   end
 ```
 

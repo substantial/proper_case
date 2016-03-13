@@ -7,7 +7,7 @@ defmodule ProperCase do
 
     pipeline :api do
       plug :accepts, ["json"]
-      plug ProperCase.snake_case_params
+      plug ProperCase
     end
 
   Enjoy :)
