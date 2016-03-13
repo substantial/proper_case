@@ -1,6 +1,49 @@
 # ProperCase
 
-**TODO: Add description**
+A helpful plug that converts your incoming parameters to
+ Elixir's `snake_case`
+
+ Plug it into your `router.ex` connection pipeline like so:
+
+```elixir
+  pipeline :api do
+    plug :accepts, ["json"]
+    plug ProperCase.snake_case_params
+  end
+```
+
+
+### Before:
+
+```elixir
+%{"user" => %{
+    "firstName" => "Han",
+    "lastName" => "Solo",
+    "alliesInCombat" => [
+      %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
+      %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
+      %{"name" => "Leia", "weapon_of_choice" => "blaster"}
+    ] 
+  }
+} 
+```
+
+### After: 
+
+```elixir
+%{"user" => %{
+    "first_name" => "Han",
+    "last_name" => "Solo",
+    "allies_in_combat" => [
+      %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
+      %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
+      %{"name" => "Leia", "weapon_of_choice" => "blaster"}
+    ]
+  }
+}
+```
+
+Enjoy :)
 
 ## Installation
 
