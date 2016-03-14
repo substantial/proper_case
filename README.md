@@ -20,9 +20,9 @@ A helpful plug that converts your incoming parameters to
     "firstName" => "Han",
     "lastName" => "Solo",
     "alliesInCombat" => [
-      %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
-      %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
-      %{"name" => "Leia", "weapon_of_choice" => "blaster"}
+      %{"name" => "Luke", "weaponOfChoice" => "lightsaber"},
+      %{"name" => "Chewie", "weaponOfChoice" => "bowcaster"},
+      %{"name" => "Leia", "weaponOfChoice" => "blaster"}
     ] 
   }
 } 
