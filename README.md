@@ -20,9 +20,9 @@ A helpful plug that converts your incoming parameters to
     "firstName" => "Han",
     "lastName" => "Solo",
     "alliesInCombat" => [
-      %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
-      %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
-      %{"name" => "Leia", "weapon_of_choice" => "blaster"}
+      %{"name" => "Luke", "weaponOfChoice" => "lightsaber"},
+      %{"name" => "Chewie", "weaponOfChoice" => "bowcaster"},
+      %{"name" => "Leia", "weaponOfChoice" => "blaster"}
     ] 
   }
 } 
@@ -52,7 +52,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add proper_case to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:proper_case, "~> 0.0.1"}]
+          [{:proper_case, "~> 0.0.3"}]
         end
 
   2. Ensure proper_case is started before your application:
