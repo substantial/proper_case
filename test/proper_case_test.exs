@@ -33,7 +33,7 @@ defmodule ProperCaseTest do
     assert ProperCase.camel_case(:no_i_am_your_father) === "noIAmYourFather"
   end
 
-  test ".snake_case_params converts map keys to `snake_case`" do
+  test ".to_snake_case converts map keys to `snake_case`" do
     expected_params = %{
       "user" => %{
         "first_name" => "Han",
@@ -55,7 +55,7 @@ defmodule ProperCaseTest do
         ] 
       }
     } 
-    assert ProperCase.snake_case_params(incoming_params) === expected_params
+    assert ProperCase.to_snake_case(incoming_params) === expected_params
   end
 
   test ".snake_case converts a string to `snake_case`" do

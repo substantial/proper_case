@@ -24,18 +24,18 @@ defmodule ProperCase do
   @doc """
   Converts all the keys in a map to `snake_case`
   """
-  def snake_case_params(params) when is_map(params) do
-    for {key, val} <- params,
+  def to_snake_case(map) when is_map(map) do
+    for {key, val} <- map,
       into: %{},
-      do: {snake_case(key), snake_case_params(val)}
+      do: {snake_case(key), to_snake_case(val)}
   end
 
-  def snake_case_params(params) when is_list(params) do
-    params
-    |> Enum.map(&snake_case_params/1)
+  def to_snake_case(list) when is_list(list) do
+    list
+    |> Enum.map(&to_snake_case/1)
   end
 
-  def snake_case_params(other_types), do: other_types 
+  def to_snake_case(other_types), do: other_types 
 
   
   

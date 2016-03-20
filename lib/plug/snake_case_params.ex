@@ -16,7 +16,7 @@ defmodule ProperCase.Plug.SnakeCaseParams do
   def init(opts), do: opts
 
   def call(%{params: params} = conn, _opts) do
-    %{conn | params: ProperCase.snake_case_params(params)}
+    %{conn | params: ProperCase.to_snake_case(params)}
   end
 
   

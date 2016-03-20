@@ -45,7 +45,7 @@ Converts a string to camel case
 ```
 
 
-# Using as a plug in Phoenix
+### Using as a plug in Phoenix
 
 `ProperCase` is extremely useful as a part of your connection pipeline, converting incoming params from
 JavaScript's `camelCase` to Elixir's `snake_case`
