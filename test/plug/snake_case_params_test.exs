@@ -1,9 +1,9 @@
-defmodule ProperCaseTest do
+defmodule ProperCase.Plug.SnakeCaseParamsTest do
   use ExUnit.Case
-
-  test ".to_camel_case converts a maps key to `camelCase`" do
-    incoming = %{
-      "user" => %{
+  alias ProperCase.Plug.SnakeCaseParams
+  
+  test ".snake_case_params converts map keys to `snake_case`" do
+    expected_params = %{"user" => %{
         "first_name" => "Han",
         "last_name" => "Solo",
         "allies_in_combat" => [
@@ -13,8 +13,7 @@ defmodule ProperCaseTest do
         ]
       }
     }
-    expected = %{
-      "user" => %{
+    incoming_params = %{"user" => %{
         "firstName" => "Han",
         "lastName" => "Solo",
         "alliesInCombat" => [
@@ -24,16 +23,6 @@ defmodule ProperCaseTest do
         ] 
       }
     } 
-
-    assert ProperCase.to_camel_case(incoming) === expected
+    assert SnakeCaseParams.snake_case_params(incoming_params) === expected_params
   end
-
-  test ".camel_case_key camel cases a string" do
-    assert ProperCase.camel_case_key("chewie_were_home") === "chewieWereHome"
-  end
-
-  test ".camel_case_key converts an atom to a string and camel cases it" do
-    assert ProperCase.camel_case_key(:no_i_am_your_father) === "noIAmYourFather"
-  end
-
 end

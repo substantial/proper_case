@@ -1,40 +1,40 @@
 defmodule ProperCase do
-  @moduledoc """
-   A helpful plug that converts your incoming parameters to
-   Elixir's `snake_case`
 
-   Plug it into your `router.ex` connection pipeline like so:
+  import String, only: [first: 1, replace: 4, downcase: 1, upcase: 1]
 
-    pipeline :api do
-      plug :accepts, ["json"]
-      plug ProperCase
-    end
-
-  Enjoy :)
-   """ 
-   
-  def init(opts), do: opts
-
-  def call(%{params: params} = conn, _opts) do
-    %{conn | params: snake_case_params(params)}
-  end
-
-  def snake_case_params(%{} = params) do
-    for {key, val} <- params,
+  @doc """
+  Converts all the keys in a map to `camelCase`
+  """
+  def to_camel_case(map) when is_map(map) do
+    for {key, val} <- map,
       into: %{},
-      do: {snake_case(key), snake_case_params(val)}
+      do: {camel_case_key(key), to_camel_case(val)}
   end
 
-  def snake_case_params(other_types), do: other_types 
+  def to_camel_case(list) when is_list(list) do
+    list
+    |> Enum.map(&to_camel_case/1)
+  end
 
-  defp snake_case(val) when is_atom(val) do
-    val
+  def to_camel_case(final_val), do: final_val
+
+  @doc """
+  Converts an atom to a `camelCase` string 
+  """
+  def camel_case_key(key) when is_atom(key) do
+    key
     |> Atom.to_string
-    |> Mix.Utils.underscore 
+    |> camel_case_key
   end
 
-  defp snake_case(val) do
-    val |> Mix.Utils.underscore
+  @doc """
+  Converts a string to `camelCase`
+  """
+  def camel_case_key(key) when is_binary(key) do
+    first_char = key |> first
+    key
+    |> Mix.Utils.camelize
+    |> replace(upcase(first_char), downcase(first_char), global: false)
   end
 
 end
