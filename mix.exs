@@ -21,9 +21,9 @@ defmodule ProperCase.Mixfile do
 
   defp description do
     """
-    A helpful plug for Phoenix that converts your incoming parameters to Elixir's preferred `snake_case`
+    An Elixir library that converts keys in maps between `snake_case` and `camel_case`.
 
-    Use directly as a part of your `router.ex` connection pipeline :)
+    Useful as a plug in Phoenix for converting incoming params from JavaScript's `camelCase` to Elixir's `snake_case`
     """
   end
 

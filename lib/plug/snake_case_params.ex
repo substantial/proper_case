@@ -16,30 +16,8 @@ defmodule ProperCase.Plug.SnakeCaseParams do
   def init(opts), do: opts
 
   def call(%{params: params} = conn, _opts) do
-    %{conn | params: snake_case_params(params)}
+    %{conn | params: ProperCase.snake_case_params(params)}
   end
 
-  def snake_case_params(params) when is_map(params) do
-    for {key, val} <- params,
-      into: %{},
-      do: {snake_case(key), snake_case_params(val)}
-  end
-
-  def snake_case_params(params) when is_list(params) do
-    params
-    |> Enum.map(&snake_case_params/1)
-  end
-
-  def snake_case_params(other_types), do: other_types 
-
-  defp snake_case(val) when is_atom(val) do
-    val
-    |> Atom.to_string
-    |> Mix.Utils.underscore 
-  end
-
-  defp snake_case(val) do
-    val |> Mix.Utils.underscore
-  end
-
+  
 end

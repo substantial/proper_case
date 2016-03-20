@@ -1,11 +1,8 @@
 defmodule ProperCaseTest do
   use ExUnit.Case
-
+  
   test ".to_camel_case converts a maps key to `camelCase`" do
-    incoming = %{
-      "user" => %{
-        "first_name" => "Han",
-        "last_name" => "Solo",
+    incoming = %{ "user" => %{ "first_name" => "Han", "last_name" => "Solo",
         "allies_in_combat" => [
           %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
           %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
@@ -29,11 +26,44 @@ defmodule ProperCaseTest do
   end
 
   test ".camel_case_key camel cases a string" do
-    assert ProperCase.camel_case_key("chewie_were_home") === "chewieWereHome"
+    assert ProperCase.camel_case("chewie_were_home") === "chewieWereHome"
   end
 
   test ".camel_case_key converts an atom to a string and camel cases it" do
-    assert ProperCase.camel_case_key(:no_i_am_your_father) === "noIAmYourFather"
+    assert ProperCase.camel_case(:no_i_am_your_father) === "noIAmYourFather"
+  end
+
+  test ".snake_case_params converts map keys to `snake_case`" do
+    expected_params = %{
+      "user" => %{
+        "first_name" => "Han",
+        "last_name" => "Solo",
+        "allies_in_combat" => [
+          %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
+          %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
+          %{"name" => "Leia", "weapon_of_choice" => "blaster"}
+        ]
+      }
+    }
+    incoming_params = %{"user" => %{
+        "firstName" => "Han",
+        "lastName" => "Solo",
+        "alliesInCombat" => [
+          %{"name" => "Luke", "weaponOfChoice" => "lightsaber"},
+          %{"name" => "Chewie", "weaponOfChoice" => "bowcaster"},
+          %{"name" => "Leia", "weaponOfChoice" => "blaster"}
+        ] 
+      }
+    } 
+    assert ProperCase.snake_case_params(incoming_params) === expected_params
+  end
+
+  test ".snake_case converts a string to `snake_case`" do
+    assert ProperCase.snake_case("getToDaChoppa") === "get_to_da_choppa"
+  end
+
+  test ".snake_case converts an atom to snake_case string" do
+    assert ProperCase.snake_case(:getToDaChoppa) === "get_to_da_choppa"
   end
 
 end

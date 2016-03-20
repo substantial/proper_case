@@ -1,21 +1,25 @@
 # ProperCase
 
-A helpful plug that converts your incoming parameters to
- Elixir's `snake_case`
+An Elixir library that converts keys in maps between `snake_case` and `camel_case`.
 
- Plug it into your `router.ex` connection pipeline like so:
+Useful as a plug in Phoenix for converting incoming params from JavaScript's `camelCase` to Elixir's `snake_case`
 
+Converts all keys in  maps to snake case
+`ProperCase.to_snake_case/1`
+
+Converts all keys in maps to camel case
+`ProperCase.to_camel_case/1`
+
+Converts a string to snake case
+`ProperCase.snake_case/1`
+
+Converts a string to camel case
+`ProperCase.camel_case/1`
+
+
+### Example: `ProperCase.to_snake_case`
 ```elixir
-  pipeline :api do
-    plug :accepts, ["json"]
-    plug ProperCase
-  end
-```
-
-
-### Before:
-
-```elixir
+# Before:
 %{"user" => %{
     "firstName" => "Han",
     "lastName" => "Solo",
@@ -26,11 +30,8 @@ A helpful plug that converts your incoming parameters to
     ] 
   }
 } 
-```
 
-### After: 
-
-```elixir
+# After
 %{"user" => %{
     "first_name" => "Han",
     "last_name" => "Solo",
@@ -43,7 +44,22 @@ A helpful plug that converts your incoming parameters to
 }
 ```
 
-Enjoy :)
+
+# Using as a plug in Phoenix
+
+`ProperCase` is extremely useful as a part of your connection pipeline, converting incoming params from
+JavaScript's `camelCase` to Elixir's `snake_case`
+
+Plug it into your `router.ex` connection pipeline like so:
+
+```elixir
+  pipeline :api do
+    plug :accepts, ["json"]
+    plug ProperCase.Plug.SnakeCaseParams
+  end
+```
+
+
 
 ## Installation
 
@@ -52,7 +68,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add proper_case to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:proper_case, "~> 0.0.3"}]
+          [{:proper_case, "~> 0.1.0"}]
         end
 
   2. Ensure proper_case is started before your application:
