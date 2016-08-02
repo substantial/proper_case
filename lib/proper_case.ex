@@ -54,7 +54,7 @@ defmodule ProperCase do
   def camel_case(key) when is_binary(key) do
     first_char = key |> first
     key
-    |> Mix.Utils.camelize
+    |> Macro.camelize
     |> replace(upcase(first_char), downcase(first_char), global: false)
   end
 
@@ -64,14 +64,14 @@ defmodule ProperCase do
   def snake_case(val) when is_atom(val) do
     val
     |> Atom.to_string
-    |> Mix.Utils.underscore 
+    |> Macro.underscore
   end
 
   @doc """
   Converts a string to `snake_case`
   """
   def snake_case(val) do
-    val |> Mix.Utils.underscore
+    val |> Macro.underscore
   end
 
 
