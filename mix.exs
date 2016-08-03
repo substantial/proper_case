@@ -3,7 +3,7 @@ defmodule ProperCase.Mixfile do
 
   def project do
     [app: :proper_case,
-     version: "0.1.1",
+     version: "0.1.2",
      elixir: "~> 1.2",
      description: description,
      package: package,
@@ -28,7 +28,7 @@ defmodule ProperCase.Mixfile do
   end
 
   defp deps do
-    []
+    [{:ex_doc, github: "elixir-lang/ex_doc"}]
   end
 
   defp package do
