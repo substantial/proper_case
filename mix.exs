@@ -35,7 +35,7 @@ defmodule ProperCase.Mixfile do
 
   defp package do
     [ 
-      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      files: ["lib", "mix.exs", "README", "LICENSE"],
       maintainers: ["Johnny Ji"],
       licenses: ["Apache 2.0"],
       links: %{
