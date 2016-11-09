@@ -68,7 +68,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add proper_case to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:proper_case, "~> 0.1.1"}]
+          [{:proper_case, "~> 0.1.3"}]
         end
 
   2. Ensure proper_case is started before your application:
@@ -76,4 +76,6 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:proper_case]]
         end
+
+
 
