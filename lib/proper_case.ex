@@ -35,12 +35,10 @@ defmodule ProperCase do
     |> Enum.map(&to_snake_case/1)
   end
 
-  def to_snake_case(other_types), do: other_types 
+  def to_snake_case(other_types), do: other_types
 
-  
-  
   @doc """
-  Converts an atom to a `camelCase` string 
+  Converts an atom to a `camelCase` string
   """
   def camel_case(key) when is_atom(key) do
     key
@@ -51,6 +49,10 @@ defmodule ProperCase do
   @doc """
   Converts a string to `camelCase`
   """
+  def camel_case("_" <> rest) do
+    "_#{camel_case(rest)}"
+  end
+
   def camel_case(key) when is_binary(key) do
     first_char = key |> first
     key
