@@ -59,7 +59,15 @@ Plug it into your `router.ex` connection pipeline like so:
   end
 ```
 
-### Transform data before encoding for JSON with Phoenix
+### CamelCase before encoding json in Phoenix
+
+Set phoenix's json encoder in `config/config.exs`
+
+```elixir
+  :phoenix, :format_encoders, json: ProperCase.JSONEncoder.CamelCase
+```
+
+### Custom data transform before encoding with Phoenix
 
 Define a custom JSON encoder that runs a transform before encoding to json.
 

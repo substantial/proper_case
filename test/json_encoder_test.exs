@@ -2,7 +2,7 @@ defmodule ProperCase.JSONEncoderTest do
   use ExUnit.Case, async: true
 
   defmodule TestEncoder do
-    use ProperCase.JSONEncoder, transform: &ProperCase.to_camel_case/1
+    use ProperCase.JSONEncoder, transform: fn(data) -> %{transformed: data} end
   end
 
   test "transforms before encoding" do
@@ -19,14 +19,16 @@ defmodule ProperCase.JSONEncoderTest do
     }
 
     expected_data = %{
-      "user" => %{
-        "firstName" => "Han",
-        "lastName" => "Solo",
-        "alliesInCombat" => [
-          %{"name" => "Luke", "weaponOfChoice" => "lightsaber"},
-          %{"name" => "Chewie", "weaponOfChoice" => "bowcaster"},
-          %{"name" => "Leia", "weaponOfChoice" => "blaster"},
-        ],
+      "transformed" => %{
+        "user" => %{
+          "first_name" => "Han",
+          "last_name" => "Solo",
+          "allies_in_combat" => [
+            %{"name" => "Luke", "weapon_of_choice" => "lightsaber"},
+            %{"name" => "Chewie", "weapon_of_choice" => "bowcaster"},
+            %{"name" => "Leia", "weapon_of_choice" => "blaster"}
+          ]
+        },
       },
     }
 
