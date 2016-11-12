@@ -3,7 +3,7 @@ defmodule ProperCase.Mixfile do
 
   def project do
     [app: :proper_case,
-     version: "0.1.3",
+     version: "1.0.0",
      elixir: "~> 1.2",
      description: description,
      package: package,
@@ -38,8 +38,8 @@ defmodule ProperCase.Mixfile do
   defp package do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE"],
-      maintainers: ["Johnny Ji"],
-      licenses: ["Apache 2.0"],
+      maintainers: ["Johnny Ji", "Shaun Dern"],
+      licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/johnnyji/proper_case",
         "Docs" => "https://github.com/johnnyji/proper_case"

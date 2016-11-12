@@ -16,6 +16,8 @@ Converts a string to snake case
 Converts a string to camel case
 `ProperCase.camel_case/1`
 
+## Usage
+
 
 ### Example: `ProperCase.to_snake_case`
 ```elixir
@@ -31,7 +33,7 @@ Converts a string to camel case
   }
 } 
 
-# After
+# After:
 %{"user" => %{
     "first_name" => "Han",
     "last_name" => "Solo",
@@ -59,9 +61,10 @@ Plug it into your `router.ex` connection pipeline like so:
   end
 ```
 
-### CamelCase before encoding json in Phoenix
+### camelCase before encoding json in Phoenix
 
-Set phoenix's json encoder in `config/config.exs`
+Set phoenix's json encoder in `config/config.exs`, this way ProperCase will camelCase your data before
+encoding to JSON:
 
 ```elixir
   :phoenix, :format_encoders, json: ProperCase.JSONEncoder.CamelCase
@@ -69,7 +72,7 @@ Set phoenix's json encoder in `config/config.exs`
 
 ### Custom data transform before encoding with Phoenix
 
-Define a custom JSON encoder that runs a transform before encoding to json.
+To ensure that outgoing params are converted to `camelCase`, define a custom JSON encoder that runs a transform before encoding to json.
 
 ```elixir
 def MyApp.CustomJSONEncoder do
@@ -91,7 +94,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add proper_case to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:proper_case, "~> 0.1.3"}]
+          [{:proper_case, "~> 1.0.0"}]
         end
 
   2. Ensure proper_case is started before your application:
@@ -102,3 +105,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 
 
+## Contributors
+
+- [Johnny Ji](https://github.com/johnnyji)
+- [Shaun Dern](https://github.com/smdern)
