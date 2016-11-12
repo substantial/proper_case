@@ -29,9 +29,9 @@ defmodule ProperCase.Mixfile do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.14.3"},
+      {:ex_doc, "~> 0.14.3", only: :dev},
       {:plug, "~> 1.2.2", only: [:test]},
-      {:poison, ">= 1.3.0", optional: true},
+      {:poison, ">= 1.3.0", only: [:test]},
     ]
   end
 
