@@ -1,5 +1,5 @@
 defmodule ProperCaseTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   test ".to_camel_case converts a maps key to `camelCase`" do
     incoming = %{ "user" => %{ "first_name" => "Han", "last_name" => "Solo",
